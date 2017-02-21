@@ -176,7 +176,12 @@ run:
 
   - replace:
       filename: "/etc/nginx/conf.d/discourse.conf"
-      from: return 301 https://enter.your.web.hostname.here;
+      from: return 301 https://enter.your.web.hostname.here_1;
+      to: return 301 https://$$ENV_DISCOURSE_HOSTNAME;
+
+  - replace:
+      filename: "/etc/nginx/conf.d/discourse.conf"
+      from: return 301 https://enter.your.web.hostname.here_2;
       to: return 301 https://$$ENV_DISCOURSE_HOSTNAME;
 
   - exec:
