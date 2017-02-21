@@ -174,6 +174,11 @@ run:
       from: /client_max_body_size.+$/
       to: client_max_body_size $upload_size ;
 
+  - replace:
+      filename: "/etc/nginx/conf.d/discourse.conf"
+      from: return 301 https://enter.your.web.hostname.here;
+      to: return 301 https://$$ENV_DISCOURSE_HOSTNAME;
+
   - exec:
       cmd: echo "done configuring web"
       hook: web_config
