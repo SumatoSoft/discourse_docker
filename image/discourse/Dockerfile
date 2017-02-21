@@ -8,11 +8,12 @@ MAINTAINER Sam Saffron "https://twitter.com/samsaffron"
 RUN useradd discourse -s /bin/bash -m -U &&\
     mkdir -p /var/www &&\
     cd /var/www &&\
-    git clone https://github.com/discourse/discourse.git &&\
+    git clone https://github.com/SumatoSoft/discourse.git &&\
     cd discourse &&\
-    git remote set-branches --add origin tests-passed &&\
     chown -R discourse:discourse /var/www/discourse &&\
     cd /var/www/discourse &&\
     sudo -u discourse bundle install --deployment \
          --without test --without development &&\
     find /var/www/discourse/vendor/bundle -name tmp -type d -exec rm -rf {} +
+
+COPY vb_forum.map /etc/nginx/vb_forum.map
