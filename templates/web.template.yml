@@ -200,7 +200,7 @@ run:
       cd: $home
       hook: bundle_exec
       cmd:
-        - su discourse -c 'bundle install --deployment --verbose --without test --without development'
+        - su discourse -c 'bundle install --deployment --verbose --without test --without development $$ENV_SKIP_EXTRA_BUNDLE_GROUP'
         - su discourse -c 'bundle exec rake db:migrate'
         - su discourse -c 'bundle exec rake assets:precompile'
 
